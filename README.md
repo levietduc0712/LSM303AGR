@@ -13,3 +13,47 @@ Contributions to this repository, including bug fixes, feature additions, and do
 The modified STM32 LSM303AGR library is provided under an open-source license, ensuring accessibility and freedom for developers to use, modify, and distribute the code according to their requirements.
 # Note:
 It's advisable to refer to the original [STM32 LSM303AGR datasheet](https://www.st.com/resource/en/datasheet/lsm303agr.pdf) and documentation for detailed specifications and usage guidelines of the sensor.
+# Example:
+```C
+		/* Init Accelerometer MEMS */
+		  if(BSP_ACCELERO_Init() != HAL_OK)
+		  {
+		    /* Initialization Error */
+			  printf("Initialization Accelerometer Error \n");
+		    Error_Handler();
+		  }
+
+		  Buffer[0] = 0;
+		  Buffer[1] = 0;
+		  Buffer[2] = 0;
+
+		  BSP_ACCELERO_GetXYZ(Buffer);
+
+		  X = Buffer[0];
+		  Y = Buffer[1];
+		  Z = Buffer[2];
+
+		  printf("X: %.2f - Y: %.2f - Z: %.2f \n", X,Y,Z);
+
+		  fflush(stdout);
+
+		  HAL_Delay(10);
+```
+When the sensor is placed flat on the surface, the collected data will be similar to the following data.
+```
+X: -0.75 - Y: -0.04 - Z: 9.69 
+X: -0.98 - Y: 0.04 - Z: 9.92 
+X: -0.98 - Y: -0.04 - Z: 9.92 
+X: -0.78 - Y: -0.04 - Z: 9.92 
+X: -0.78 - Y: 0.04 - Z: 9.81 
+X: -0.78 - Y: -0.04 - Z: 9.92 
+X: -0.82 - Y: 0.16 - Z: 9.92 
+X: -0.82 - Y: -0.08 - Z: 9.89 
+X: -0.75 - Y: -0.08 - Z: 9.89 
+X: -0.75 - Y: -0.08 - Z: 9.92 
+X: -0.98 - Y: -0.04 - Z: 9.69 
+X: -0.75 - Y: -0.08 - Z: 9.81 
+X: -0.75 - Y: -0.04 - Z: 9.85 
+X: -0.75 - Y: -0.04 - Z: 9.85 
+```
+Because the sensor is placed flat on the surface, it will measure an acceleration due to Earth's gravity on the Z-axis of approximately 9.81 m/s^2. Looking at the collected data, it can be seen that the data appears to be unstable due to various influencing factors. We need to address this to ensure that the sensor will function and provide accurate results.
