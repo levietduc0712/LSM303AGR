@@ -56,4 +56,8 @@ X: -0.75 - Y: -0.08 - Z: 9.81
 X: -0.75 - Y: -0.04 - Z: 9.85 
 X: -0.75 - Y: -0.04 - Z: 9.85 
 ```
-Because the sensor is placed flat on the surface, it will measure an acceleration due to Earth's gravity on the Z-axis of approximately 9.81 m/s^2. Looking at the collected data, it can be seen that the data appears to be unstable due to various influencing factors. We need to address this to ensure that the sensor will function and provide accurate results.
+Because the sensor is placed flat on the surface, it will measure an acceleration due to Earth's gravity on the Z-axis of approximately 9.81 $m/s^2$. Looking at the collected data, it can be seen that the data appears to be unstable due to various influencing factors. We need to address this to ensure that the sensor will function and provide accurate results.
+
+[Calibrating the accelerometer](https://www.st.com/resource/en/application_note/an4508-parameters-and-calibration-of-a-lowg-3axis-accelerometer-stmicroelectronics.pdf)
+
+
